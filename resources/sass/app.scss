@@ -1,0 +1,101 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&display=swap');
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+
+// vars
+$font-oswald: 'Oswald', sans-serif;
+$oswald-bold: 700;
+$oswald-medium: 400;
+$oswald-regular: 200;
+
+// Commons
+body::-webkit-scrollbar {
+  width: 0.75rem;
+}
+ 
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px #c7c7c7;
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: #33333348;
+  border-radius: 0.5rem;
+  
+}
+// HEADER
+header{
+  
+  .logo{
+    width: 150px;
+  }
+
+}
+
+.ea-jumbo {
+  background-image: url('../images/jumbo.png');
+
+  h1 {
+    font-weight: $oswald-bold;
+    font-family: $font-oswald;
+ 
+
+  }
+ 
+} 
+
+//Main content Games 
+
+.games {
+ 
+   .game {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     position: relative;
+     img {
+       width: 100%;
+       
+     }
+     h4{
+       position: absolute;
+       color: white;
+       font-weight: 900;
+     }
+   }
+
+}
+
+
+// Footer
+
+footer{
+  background-color: #ededed;
+  color: black;
+  padding: 3rem;
+  
+  nav {
+    .logo {
+    width: 60px;
+    height: 60px;
+  }
+    .menu {
+      display: flex;
+      align-items: center;
+      a {
+        padding: 0.25rem 1.5rem;
+        font-family:$font-oswald;
+        color: black;
+        text-transform: uppercase;
+        font-size: 1.25rem;
+        font-weight: $oswald-medium;
+      }
+    }
+  }
+}
