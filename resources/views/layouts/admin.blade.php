@@ -89,7 +89,33 @@
         </header>
         @yield('jumbotron')
         <main class="py-4">
-            @yield('content')
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <aside>
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#">Dashboard</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Games</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Categories</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Platforms</a>          
+                                </li>
+                            </ul>
+                        </aside>
+                    </div>
+                    <div class="col-md-9">
+                        @yield('content')
+                    </div>
+                    
+                </div>
+            </div> 
         </main>
 
         <footer>
