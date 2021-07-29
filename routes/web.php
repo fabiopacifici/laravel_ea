@@ -28,5 +28,38 @@ Route::get('games/{game:slug}', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
+
+Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', 'HomeController@index')->name('dashboard');
+    Route::resource('games', GameController::class);
+});
+
+// games/{game}/details
+
+// DB
+/* 
+# games table
+- id
+- title
+- thumb
+
+# gameDetails (one to one)
+- cover_image
+- motte
+- summary
+- description
+- youtube_url 
+
+
+# categories (one to many)
+-id
+-name
+-slug
+
+# platforms (many to many)
+- id
+- nome
+- slug
+- logo
+*/
