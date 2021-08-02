@@ -25,6 +25,10 @@ Route::get('games/{game:slug}', function () {
     return view('guests.games.show');
 })->name('games.show');
 
+Route::get('vue-games', function () {
+    return view('games');
+});
+
 
 Auth::routes();
 
@@ -33,12 +37,16 @@ Auth::routes();
 Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', 'HomeController@index')->name('dashboard');
     Route::resource('games', GameController::class);
+    Route::resource('categories', CategoryController::class);
+    Route::resource('platforms', PlatformController::class);
+    Route::post('api-token', 'ApiTokenController@update')->name('api_token');
+
 });
 
 // games/{game}/details
 
 // DB
-/* 
+/*
 # games table
 - id
 - title
@@ -49,7 +57,7 @@ Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')->
 - motte
 - summary
 - description
-- youtube_url 
+- youtube_url
 
 
 # categories (one to many)
