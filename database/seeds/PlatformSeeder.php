@@ -17,7 +17,7 @@ class PlatformSeeder extends Seeder
             [
                 'name'=> 'Nintendo 3DS',
                 'logo'=> 'https://media.contentapi.ea.com/content/dam/eacom/images/2017/11/ea-grid-3up-library-nintendo-3ds.png.adapt.crop16x9.652w.png'
-            ], 
+            ],
             [
                 'name' => 'XBOX',
                 'logo' => 'https://media.contentapi.ea.com/content/dam/eacom/images/2020/06/ea-grid-3up-library-xbox-series-x.png.adapt.crop16x9.652w.png'
@@ -28,7 +28,7 @@ class PlatformSeeder extends Seeder
             ],
             [
                'name' => 'PC',
-               'logo' => 'https://media.contentapi.ea.com/content/dam/eacom/images/2017/11/ea-grid-3up-library-pc.png.adapt.crop16x9.652w.png' 
+                'logo' => 'https://media.contentapi.ea.com/content/dam/eacom/images/2017/11/ea-grid-3up-library-pc.png.adapt.crop16x9.652w.png'
             ]
             ];
 

@@ -15,7 +15,7 @@ class AddCategoryIdToGamesTable extends Migration
     {
         Schema::table('games', function (Blueprint $table) {
             $table->unsignedBigInteger('category_id')->nullable()->after('id');
-            $table->foreign('category_id')->references('id')->on('games');
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 

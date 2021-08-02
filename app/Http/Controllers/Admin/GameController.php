@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Game;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
 class GameController extends Controller
 {
     /**
@@ -15,7 +15,7 @@ class GameController extends Controller
      */
     public function index()
     {
-        $games = Game::all();
+        $games = Game::orderByDesc('id')->paginate(5);
         return view('admin.games.index', compact('games'));
     }
 
@@ -41,16 +41,17 @@ class GameController extends Controller
         $validateData = $request->validate([
             // validare i dati
             'name' => 'required | min:3 | max:100',
-            'thumb' => 'required | image | max:50'
+            'thumb' => 'required | image | max:100'
         ]);
 
+        //ddd($request->all());
         // Store the image
         $file_path = Storage::put('game_thumbs', $validateData['thumb']);
         $validateData['thumb'] = $file_path;
         // creare la risora
         $game = Game::create($validateData);
         // return redirect
-        return redirect()->route('admin.games.index');
+        return redirect()->route('admin.games.index')->with('message', 'Success! A new Game was added.');
 
     }
 
@@ -85,11 +86,13 @@ class GameController extends Controller
      */
     public function update(Request $request, Game $game)
     {
+
+        //ddd($game, $request->all());
           // validate request
         $validateData = $request->validate([
             // validare i dati
-            'name' => 'required | min:3 | max:100',
-            'thumb' => 'required | image | max:50'
+            'name' => 'min:3 | max:100',
+            'thumb' => 'image | max:100'
         ]);
 
         if(array_key_exists('thumb', $validateData)){
@@ -98,7 +101,7 @@ class GameController extends Controller
             $file_path = Storage::put('game_thumbs', $validateData['thumb']);
             $validateData['thumb'] = $file_path;
         }
-        
+
         // creare la risora
         $game->update($validateData);
         // return redirect
@@ -113,7 +116,8 @@ class GameController extends Controller
      */
     public function destroy(Game $game)
     {
+        Storage::delete($game->thumb);
         $game->delete();
-        return redirect()->back()->with('message', 'Game deleted');
+        return redirect()->back()->with('message', 'Game and image thumbnail deleted');
     }
 }

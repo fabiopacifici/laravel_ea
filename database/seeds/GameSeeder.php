@@ -14,10 +14,10 @@ class GameSeeder extends Seeder
     {
         $titles = ['Star wars fallen order', 'Mass effect leggendary edition', 'Fifa 22', 'Madden 22', 'Battle field 2042', 'The sims 4', 'Apex Legends', 'Need for speed payback', 'Anthem'];
 
-        for ($i=0; $i  < 9; $i++) { 
+        for ($i = 0; $i  < 9; $i++) {
             $game = new Game();
             $game->name = $titles[$i];
-            $game->thumb = $faker->image('storage/app/public/placeholders', 400, 400, 'Game', false, true, $game->name);
+            $game->thumb =  'placeholders/' . $faker->image('storage/app/public/placeholders', 400, 400, 'Game', false, true, $game->name);
             $game->save();
         }
 

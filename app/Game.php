@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Game extends Model
 {
-    
 
+    protected $fillable = ['name', 'thumb'];
 
     /**
      * Get the detail associated with the Game
@@ -32,7 +32,7 @@ class Game extends Model
         return $this->belongsTo(Category::class);
     }
 
-    
+
     /**
      * The platforms that belong to the Game
      *
