@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\User;
 use Closure;
 
 class CheckApiToken
@@ -28,16 +29,20 @@ class CheckApiToken
 
         // Estrai token
         $api_token = substr($auth_token, 7);
-        ddd($api_token);
+        /*  return response()->json([
+            'api_token'  => $api_token
+        ]); */
         // verifichiamo token
-        $user = User::where('api_token', $api_token)->first();
-        if (!$user) {
+        $api_token_hash = hash('sha256', $api_token);
+        $user = User::where('api_token', $api_token_hash)->first();
+
+        if ($user === null) {
+
             return response()->json([
-                'successe' => false,
+                'success' => false,
                 'error' => 'API token errato'
             ]);
         }
-
 
         return $next($request);
     }
